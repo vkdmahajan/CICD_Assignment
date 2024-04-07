@@ -29,4 +29,20 @@ jobs:
           push: true
           tags: vkdmahajan/cicd_mlops:latest
           file: ./docker_file
+          
+  test_image:
+    name: Test Docker image
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: Pull Docker image
+        run: docker pull vkdmahajan/cicd_mlops:latest
+
+      - name: Execute Docker image and test
+        run: |
+          OUTPUT=$(docker run --rm vkdmahajan/cicd_mlops:latest)
+          echo "Score: $OUTPUT"
+          if [[ `echo "$OUTPUT 0.50" | awk '{print ($1 < $2)}'` == 1 ]]; then
+            echo "Insufficient Accuracy"
+            exit 1
+          fi
