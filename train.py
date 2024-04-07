@@ -10,10 +10,8 @@ y = df['Disease'].to_numpy()
 labels = np.sort(np.unique(y))
 y = np.array([np.where(labels == x) for x in y]).flatten()
 
-# model = LogisticRegression().fit(X,y)  
-
-# Trying GaussianNB for better accuracy
-model = GaussianNB().fit(X,y)
+# Trying adam solver for fail case accuracy
+model = LogisticRegression(solver='adam').fit(X, y)
 
 with open("model.pkl", 'wb') as f:
     pickle.dump(model, f)
