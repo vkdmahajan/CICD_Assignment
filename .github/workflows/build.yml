@@ -28,3 +28,5 @@ jobs:
         with:
           push: true
           tags: vkdmahajan/cicd_mlops:latest
+          file: ./docker_file
+
