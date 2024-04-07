@@ -29,7 +29,7 @@ jobs:
           push: true
           tags: vkdmahajan/cicd_mlops:latest
           file: ./docker_file
-
+          
   test_image:
     name: Test Docker image
     runs-on: ubuntu-latest
