@@ -10,8 +10,8 @@ y = df['Disease'].to_numpy()
 labels = np.sort(np.unique(y))
 y = np.array([np.where(labels == x) for x in y]).flatten()
 
-# Trying to Use only the first 10 samples for training
-model = LogisticRegression(solver='lbfgs').fit(X[:10], y[:10])
+# Trying to create a dummy model with wrong information as example below
+model = "This is not a model."
 
 with open("model.pkl", 'wb') as f:
     pickle.dump(model, f)
